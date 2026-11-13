@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillMint - Turn Your Skills Into Income</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#102b55">
+
+<style>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: #f4f7fc;
+  color: #192b46;
+}
+
+header {
+  background: linear-gradient(135deg, #102b55, #1765b9);
+  color: white;
+  padding: 27px 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px #102b5525;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+
+header p {
+  margin: 8px 0 0;
+  color: #d9eaff;
+  font-size: 14px;
+}
+
+main {
+  max-width: 850px;
+  margin: auto;
+  padding: 20px;
+}
+
+.welcome {
+  background: linear-gradient(135deg, #ffffff, #eaf2ff);
+  padding: 25px;
+  border-radius: 18px;
+  margin-bottom: 25px;
+  border: 1px solid #dce8fa;
+  box-shadow: 0 5px 20px #183b6810;
+}
+
+.welcome h2 {
+  color: #124d91;
+  font-size: 23px;
+  margin-top: 0;
+}
+
+.welcome p {
+  line-height: 1.6;
+  color: #52647e;
+}
+
+.section-title {
+  color: #16365f;
+  font-size: 21px;
+  margin-bottom: 16px;
+}
+
+.tools {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.tool {
+  border: 1px solid #e3eaf5;
+  background: white;
+  border-radius: 16px;
+  padding: 22px 10px;
+  text-align: center;
+  color: #19395f;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 15px #102b5510;
+  min-height: 115px;
+  transition: 0.2s;
+}
+
+.tool:active {
+  background: #e9f2ff;
+  transform: scale(0.97);
+}
+
+.tool .emoji {
+  display: block;
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+.tool-page {
+  display: none;
+  background: white;
+  padding: 23px;
+  border-radius: 18px;
+  box-shadow: 0 5px 20px #102b5512;
+  border: 1px solid #e3eaf5;
+}
+
+.tool-page h2 {
+  color: #124d91;
+  margin-top: 22px;
+  font-size: 23px;
+}
+
+.tool-page p {
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.back-btn {
+  background: #eaf2ff;
+  color: #1556a0;
+  border: 0;
+  border-radius: 9px;
+  padding: 12px 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 18px 0 8px;
+  color: #263f60;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d5dfed;
+  border-radius: 10px;
+  font-size: 15px;
+  background: #fbfcff;
+  color: #24364e;
+  outline: none;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #2677d4;
+  box-shadow: 0 0 0 3px #2677d41a;
+}
+
+textarea {
+  min-height: 105px;
+  resize: vertical;
+}
+
+.generate {
+  width: 100%;
+  margin-top: 22px;
+  padding: 15px;
+  background: linear-gradient(135deg, #1765d1, #124d91);
+  color: white;
+  border: 0;
+  border-radius: 11px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px #1765d130;
+}
+
+.generate:active {
+  transform: scale(0.98);
+}
+
+.output {
+  margin-top: 20px;
+  padding: 17px;
+  background: #f0f6ff;
+  border: 1px solid #dce9fa;
+  border-radius: 11px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: #263f60;
+}
+
+.copy-btn {
+  margin-top: 12px;
+  background: #153c70;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 28px 15px;
+  color: #8190a5;
+  font-size: 13px;
+}
+
+@media (max-width: 360px) {
+  main { padding: 12px; }
+  .tool { font-size: 13px; }
+  .welcome { padding: 18px; }
+}
+</style>
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🌱 SkillMint</h1>
+  <p>Turn Your Skills Into Income</p>
+</header>
+
+<main>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="dashboard">
+
+  <div class="welcome">
+    <h2>Welcome to SkillMint!</h2>
+    <p>Your simple productivity toolkit for freelancing, business and professional growth.</p>
+    <p><strong>Choose a tool below to get started.</strong></p>
+  </div>
+
+  <h2 class="section-title">Explore Your Tools</h2>
+
+  <div class="tools">
+
+    <button class="tool" onclick="openTool(1)">
+      <span class="emoji">📝</span>Proposal Maker
+    </button>
+
+    <button class="tool" onclick="openTool(2)">
+      <span class="emoji">✉️</span>Email Writer
+    </button>
+
+    <button class="tool" onclick="openTool(3)">
+      <span class="emoji">📱</span>Social Captions
+    </button>
+
+    <button class="tool" onclick="openTool(4)">
+      <span class="emoji">🛍️</span>Product Description
+    </button>
+
+    <button class="tool" onclick="openTool(5)">
+      <span class="emoji">📄</span>CV Summary Builder
+    </button>
+
+    <button class="tool" onclick="openTool(6)">
+      <span class="emoji">💼</span>Cover Letter
+    </button>
+
+    <button class="tool" onclick="openTool(7)">
+      <span class="emoji">📊</span>Excel Assistant
+    </button>
+
+    <button class="tool" onclick="openTool(8)">
+      <span class="emoji">🚀</span>Business Writer
+    </button>
+
+  </div>
+</div>
+
+<!-- TOOL 1 -->
+<section class="tool-page" id="toolPage1">
+  <button class="back-btn" onclick="goHome()">← Back to Dashboard</button>
+  <h2>📝 Freelance Proposal Maker</h2>
+  <p>Create a professional proposal for a freelance project.</p>
+
+  <label>Client name</label>
+  <input id="client" placeholder="Enter client name">
+
+  <label>Project title</label>
+  <input id="project" placeholder="e.g. Data Entry Project">
+
+  <label>Your skills</label>
+  <textarea id="skills" placeholder="Describe your skills"></textarea>
+
+  <label>Why should the client hire you?</label>
+  <textarea id="reason" placeholder="Describe what you can offer"></textarea>
+
+  <button class="generate" onclick="proposal()">Generate Proposal</button>
+  <div id="proposalOut"></div>
+</section>
+
+<!-- TOOL 2 -->
+<section class="tool-page" id="toolPage2">
+  <button class="back-btn" onclick="goHome()">← Back to Dashboard</button>
+  <h2>✉️ Professional Email Writer</h2>
+  <p>Prepare a professional email for work or business.</p>
+
+  <label>Email purpose</label>
+  <select id="emailPurpose">
+    <option>Job Application</option>
+    <option>Client Follow-up</option>
+    <option>Meeting Request</option>
+    <option>Thank You</option>
+    <option>Business Inquiry</option>
+    <option>Complaint</option>
+  </select>
+
+  <label>Recipient name</label>
+  <input id="emailName" placeholder="Enter recipient name">
+
+  <label>Important details</label>
+  <textarea id="emailDetails" placeholder="What do you want to say?"></textarea>
+
+  <button class="generate" onclick="emailWriter()">Generate Email</button>
+  <div id="emailOut"></div>
+</section>
+
+<!-- TOOL 3 -->
+<section class="tool-page" id="toolPage3">
+  <button class="back-btn" onclick="goHome()">← Back to Dashboard</button>
+  <h2>📱 Social Media Caption Generator</h2>
+  <p>Create captions for your social media posts.</p>
+
+  <label>Platform</label>
+  <select id="platform">
+    <option>Instagram</option>
+    <option>Facebook</option>
+    <option>LinkedIn</option>
+    <option>WhatsApp</option>
+  </select>
+
+  <label>Post topic</label>
+  <input id="captionTopic" placeholder="What is your post about?">
+
+  <label>Tone</label>
+  <select id="captionTone">
+    <option>Professional</option>
+    <option>Friendly</option>
+    <option>Funny</option>
+    <option>Motivational</option>
+    <option>Persuasive</option>
+  </select>
+
+  <button class="generate" onclick="caption()">Generate Caption</button>
+  <div id="captionOut"></div>
+</section>
+
+<!-- TOOL 4 -->
+<section class="tool-page" id="toolPage4">
+  <button class="back-btn" onclick="goHome()">← Back to Dashboard</button>
+  <h2>🛍️ Product Description Writer</h2>
+  <p>Write attractive descriptions for products.</p>
+
+  <label>Product name</label>
+  <input id="productName" placeholder="e.g. Leather Wallet">
+
+  <label>Product features</label>
+  <textarea id="productFeatures" placeholder="Describe its features"></textarea>
+
+  <label>Target customer</label>
+  <input id="targetCustomer" placeholder="e.g. Men and women">
+
+  <button class="generate" onclick="description()">Generate Description</button>
+  <div id="descriptionOut"></div>
+</section>
+
+<!-- TOOL 5 -->
+<section class="tool-page" id="toolPage5">
+  <button class="back-btn" onclick="goHome()">← Back to Dashboard</button>
+  <h2>📄 CV Summary Builder</h2>
+  <p>Create a professional summary for your CV.</p>
+
+  <label>Your name</label>
+  <input id="cvName" placeholder="Enter your name">
+
+  <label>Professional field</label>
+  <input id="cvField" placeholder="e.g. Electrical Engineering">
+
+  <label>Experience</label>
+  <input id="cvExperience" placeholder="e.g. 3 years or Fresh Graduate">
+
+  <label>Your skills</label>
+  <textarea id="cvSkills" placeholder="Enter your main skills"></textarea>
+
+  <button class="generate" onclick="cvBuilder()">Build CV Summary</button>
+  <div id="cvOut"></div>
+</section>
+
+<!-- TOOL 6 -->
+<section class="tool-page" id="toolPage6">
+  <button class="back-btn" onclick="goHome()">← Back to Dashboard</button>
+  <h2>💼 Cover Letter Generator</h2>
+  <p>Prepare a cover letter for a job application.</p>
+
+  <label>Your name</label>
+  <input id="coverName" placeholder="Your name">
+
+  <label>Job title</label>
+  <input id="jobTitle" placeholder="e.g. Electrical Engineer">
+
+  <label>Company name</label>
+  <input id="companyName" placeholder="Company name">
+
+  <label>Your qualifications and skills</label>
+  <textarea id="coverSkills" placeholder="Describe your qualifications and skills"></textarea>
+
+  <button class="generate" onclick="coverLetter()">Generate Cover Letter</button>
+  <div id="coverOut"></div>
+</section>
+
+<!-- TOOL 7 -->
+<section class="tool-page" id="toolPage7">
+  <button class="back-btn" onclick="goHome()">← Back to Dashboard</button>
+  <h2>📊 Excel Formula Assistant</h2>
+  <p>Find a useful Excel formula for common tasks.</p>
+
+  <label>Choose your task</label>
+  <select id="excelTask">
+    <option value="sum">Add numbers</option>
+    <option value="average">Calculate average</option>
+    <option value="count">Count numbers</option>
+    <option value="maximum">Find highest number</option>
+    <option value="minimum">Find lowest number</option>
+    <option value="if">Check a condition</option>
+  </select>
+
+  <label>Cell range or details</label>
+  <input id="excelRange" placeholder="e.g. A1:A10">
+
+  <button class="generate" onclick="excelHelper()">Get Excel Formula</button>
+  <div id="excelOut"></div>
+</section>
+
+<!-- TOOL 8 -->
+<section class="tool-page" id="toolPage8">
+  <button class="back-btn" onclick="goHome()">← Back to Dashboard</button>
+  <h2>🚀 Business Content Writer</h2>
+  <p>Create simple promotional content for your business.</p>
+
+  <label>Business name</label>
+  <input id="businessName" placeholder="Enter business name">
+
+  <label>Product or service</label>
+  <input id="businessProduct" placeholder="What do you sell?">
+
+  <label>Platform</label>
+  <select id="businessPlatform">
+    <option>Facebook</option>
+    <option>Instagram</option>
+    <option>LinkedIn</option>
+    <option>WhatsApp</option>
+  </select>
+
+  <label>Special offer or message</label>
+  <textarea id="businessOffer" placeholder="Describe your offer or message"></textarea>
+
+  <button class="generate" onclick="businessWriter()">Generate Business Content</button>
+  <div id="businessOut"></div>
+</section>
+
+</main>
+
+<footer>
+  SkillMint © 2026 | Turn Your Skills Into Income
+</footer>
+
+<script>
+
+// NAVIGATION
+function openTool(number){
+  document.getElementById("dashboard").style.display="none";
+
+  document.querySelectorAll(".tool-page").forEach(function(page){
+    page.style.display="none";
+  });
+
+  document.getElementById("toolPage"+number).style.display="block";
+  window.scrollTo(0,0);
+}
+
+function goHome(){
+  document.querySelectorAll(".tool-page").forEach(function(page){
+    page.style.display="none";
+  });
+
+  document.getElementById("dashboard").style.display="block";
+  window.scrollTo(0,0);
+}
+
+// OUTPUT AND COPY
+function show(id,text){
+  const output=document.getElementById(id);
+  output.innerHTML="";
+
+  const result=document.createElement("div");
+  result.className="output";
+  result.textContent=text;
+
+  const button=document.createElement("button");
+  button.className="copy-btn";
+  button.textContent="Copy Text";
+
+  button.onclick=function(){
+    const area=document.createElement("textarea");
+    area.value=text;
+    document.body.appendChild(area);
+    area.select();
+
+    let copied=false;
+    try{
+      copied=document.execCommand("copy");
+    }catch(error){
+      copied=false;
+    }
+
+    document.body.removeChild(area);
+
+    if(copied){
+      button.textContent="Copied!";
+    }else{
+      button.textContent="Select text above to copy";
+    }
+  };
+
+  output.appendChild(result);
+  output.appendChild(button);
+}
+
+// TOOL 1
+function proposal(){
+  let client=document.getElementById("client").value.trim();
+  let project=document.getElementById("project").value.trim();
+  let skills=document.getElementById("skills").value.trim();
+  let reason=document.getElementById("reason").value.trim();
+
+  if(!project || !skills){
+    alert("Please enter the project title and your skills.");
+    return;
+  }
+
+  let result="Dear "+(client || "Hiring Manager")+",\n\n"+
+  "I am interested in working on your project: "+project+".\n\n"+
+  "My relevant skills include "+skills+".\n\n"+
+  (reason ? reason : "I am committed to delivering quality work and communicating clearly throughout the project.")+
+  "\n\nI would appreciate the opportunity to discuss your requirements further.\n\nBest regards";
+
+  show("proposalOut",result);
+}
+
+// TOOL 2
+function emailWriter(){
+  let purpose=document.getElementById("emailPurpose").value;
+  let name=document.getElementById("emailName").value.trim();
+  let details=document.getElementById("emailDetails").value.trim();
+
+  if(!details){
+    alert("Please enter the details of your email.");
+    return;
+  }
+
+  let result="Subject: "+purpose+"\n\n"+
+  "Dear "+(name || "Sir/Madam")+",\n\n"+
+  details+"\n\n"+
+  "Thank you for your time and consideration.\n\nBest regards,\n[Your Name]";
+
+  show("emailOut",result);
+}
+
+// TOOL 3
+function caption(){
+  let platform=document.getElementById("platform").value;
+  let topic=document.getElementById("captionTopic").value.trim();
+  let tone=document.getElementById("captionTone").value;
+
+  if(!topic){
+    alert("Please enter your post topic.");
+    return;
+  }
+
+  let result="✨ "+topic+" ✨\n\n"+
+  "Discover something special with us! "+
+  "We believe in bringing you value, quality and a great experience.\n\n"+
+  "Tone: "+tone+"\n"+
+  "Platform: "+platform+"\n\n"+
+  "#"+topic.replace(/[^a-zA-Z0-9]/g,"")+" #Quality #Success #Explore";
+
+  show("captionOut",result);
+}
+
+// TOOL 4
+function description(){
+  let name=document.getElementById("productName").value.trim();
+  let features=document.getElementById("productFeatures").value.trim();
+  let customer=document.getElementById("targetCustomer").value.trim();
+
+  if(!name || !features){
+    alert("Please enter the product name and features.");
+    return;
+  }
+
+  let result=name+"\n\n"+
+  "Discover "+name+", designed with your needs in mind.\n\n"+
+  "Key Features:\n"+features+"\n\n"+
+  "Perfect for: "+(customer || "customers looking for quality and value")+
+  "\n\nChoose "+name+" today and experience the difference!";
+
+  show("descriptionOut",result);
+}
+
+// TOOL 5
+function cvBuilder(){
+  let name=document.getElementById("cvName").value.trim();
+  let field=document.getElementById("cvField").value.trim();
+  let experience=document.getElementById("cvExperience").value.trim();
+  let skills=document.getElementById("cvSkills").value.trim();
+
+  if(!field || !skills){
+    alert("Please enter your professional field and skills.");
+    return;
+  }
+
+  let result=(name ? name+"\n\n" : "")+
+  "PROFESSIONAL SUMMARY\n\n"+
+  "Motivated "+field+" professional with "+(experience || "relevant experience")+
+  ". Possesses knowledge and skills in "+skills+
+  ". Demonstrates a commitment to professional development, problem-solving and delivering quality results.";
+
+  show("cvOut",result);
+}
+
+// TOOL 6
+function coverLetter(){
+  let name=document.getElementById("coverName").value.trim();
+  let job=document.getElementById("jobTitle").value.trim();
+  let company=document.getElementById("companyName").value.trim();
+  let skills=document.getElementById("coverSkills").value.trim();
+
+  if(!job || !skills){
+    alert("Please enter the job title and your qualifications.");
+    return;
+  }
+
+  let result=(name || "[Your Name]")+"\n\n"+
+  "Dear Hiring Manager,\n\n"+
+  "I am writing to express my interest in the "+job+
+  " position at "+(company || "your organisation")+
+  ". My qualifications and skills include "+skills+
+  ".\n\nI am eager to contribute my abilities, learn and grow professionally. I would welcome the opportunity to discuss how I could contribute to your team.\n\n"+
+  "Thank you for considering my application.\n\nSincerely,\n"+(name || "[Your Name]");
+
+  show("coverOut",result);
+}
+
+// TOOL 7
+function excelHelper(){
+  let task=document.getElementById("excelTask").value;
+  let range=document.getElementById("excelRange").value.trim();
+
+  if(!range){
+    alert("Please enter a cell range, for example A1:A10.");
+    return;
+  }
+
+  let formula="";
+
+  if(task==="sum") formula="=SUM("+range+")";
+  if(task==="average") formula="=AVERAGE("+range+")";
+  if(task==="count") formula="=COUNT("+range+")";
+  if(task==="maximum") formula="=MAX("+range+")";
+  if(task==="minimum") formula="=MIN("+range+")";
+  if(task==="if") formula='=IF('+range+'="Yes","Approved","Not Approved")';
+
+  show("excelOut","Your Excel formula:\n\n"+formula+
+  "\n\nCopy this formula and paste it into your Excel cell. For the IF formula, enter a single cell such as A1 instead of a range.");
+}
+
+// TOOL 8
+function businessWriter(){
+  let name=document.getElementById("businessName").value.trim();
+  let product=document.getElementById("businessProduct").value.trim();
+  let platform=document.getElementById("businessPlatform").value;
+  let offer=document.getElementById("businessOffer").value.trim();
+
+  if(!name || !product){
+    alert("Please enter your business name and product or service.");
+    return;
+  }
+
+  let result="🌟 "+name+" 🌟\n\n"+
+  "Looking for "+product+"?\n\n"+
+  "At "+name+", we are committed to providing quality and value to our customers.\n\n"+
+  (offer ? offer+"\n\n" : "Contact us today to learn more about our products and services!\n\n")+
+  "Connect with us on "+platform+".\n\n"+
+  "Thank you for supporting our business!";
+
+  show("businessOut",result);
+}
+
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function() {
+    navigator.serviceWorker.register("./sw.js")
+      .then(function() {
+        console.log("SkillMint is ready!");
+      })
+      .catch(function(error) {
+        console.log("Service worker error:", error);
+      });
+  });
+}
+</script>
+
+
+</body>
+</html>
