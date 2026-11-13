@@ -725,5 +725,115 @@ if ("serviceWorker" in navigator) {
 </script>
 
 
+async function skillMintAI(outputId, prompt) {
+  const output = document.getElementById(outputId);
+
+  output.style.whiteSpace = "pre-wrap";
+  output.textContent = "SkillMint AI is working... Please wait.";
+
+  try {
+    const response = await fetch("/.netlify/functions/generate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ prompt: prompt })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "AI request failed.");
+    }
+
+    output.textContent = data.output || "No result received. Please try again.";
+
+  } catch (error) {
+    output.textContent = "Sorry! " + error.message;
+  }
+}
+
+function proposal() {
+  skillMintAI("proposalOut",
+    "Write a professional freelance proposal. Client: " +
+    document.getElementById("client").value +
+    ". Project: " + document.getElementById("project").value +
+    ". Skills: " + document.getElementById("skills").value +
+    ". Why hire me: " + document.getElementById("reason").value
+  );
+}
+
+function emailWriter() {
+  skillMintAI("emailOut",
+    "Write a professional email. Purpose: " +
+    document.getElementById("emailPurpose").value +
+    ". Recipient: " + document.getElementById("emailName").value +
+    ". Details: " + document.getElementById("emailDetails").value
+  );
+}
+
+function caption() {
+  skillMintAI("captionOut",
+    "Create an engaging social media caption. Platform: " +
+    document.getElementById("platform").value +
+    ". Topic: " + document.getElementById("captionTopic").value +
+    ". Tone: " + document.getElementById("captionTone").value +
+    ". Include suitable hashtags."
+  );
+}
+
+function description() {
+  skillMintAI("descriptionOut",
+    "Write an attractive product description. Product: " +
+    document.getElementById("productName").value +
+    ". Features: " + document.getElementById("productFeatures").value +
+    ". Target customer: " + document.getElementById("targetCustomer").value
+  );
+}
+
+function cvBuilder() {
+  skillMintAI("cvOut",
+    "Create a professional CV summary. Name: " +
+    document.getElementById("cvName").value +
+    ". Field: " + document.getElementById("cvField").value +
+    ". Experience: " + document.getElementById("cvExperience").value +
+    ". Skills: " + document.getElementById("cvSkills").value
+  );
+}
+
+function coverLetter() {
+  skillMintAI("coverOut",
+    "Write a professional job application cover letter. Name: " +
+    document.getElementById("coverName").value +
+    ". Job title: " + document.getElementById("jobTitle").value +
+    ". Company: " + document.getElementById("companyName").value +
+    ". Qualifications and skills: " +
+    document.getElementById("coverSkills").value
+  );
+}
+
+function excelHelper() {
+  skillMintAI("excelOut",
+    "Act as an Excel expert. Explain the correct Excel formula for this task: " +
+    document.getElementById("excelTask").value +
+    ". Cell range or details: " +
+    document.getElementById("excelRange").value +
+    ". Give the formula and a simple explanation."
+  );
+}
+
+function businessWriter() {
+  skillMintAI("businessOut",
+    "Create attractive promotional business content. Business: " +
+    document.getElementById("businessName").value +
+    ". Product or service: " +
+    document.getElementById("businessProduct").value +
+    ". Platform: " +
+    document.getElementById("businessPlatform").value +
+    ". Special offer or message: " +
+    document.getElementById("businessOffer").value
+  );
+}
+  
 </body>
 </html>
