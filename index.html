@@ -726,6 +726,7 @@ if ("serviceWorker" in navigator) {
   <script>
 
 
+
 async function skillMintAI(outputId, prompt) {
   const output = document.getElementById(outputId);
 
@@ -747,13 +748,33 @@ async function skillMintAI(outputId, prompt) {
       throw new Error(data.error || "AI request failed.");
     }
 
-    output.textContent = data.output || "No result received. Please try again.";
+    const result = data.output || "No result received. Please try again.";
+
+    output.textContent = result;
+
+    if (data.output) {
+      const copyButton = document.createElement("button");
+      copyButton.textContent = "Copy Result";
+      copyButton.className = "generate";
+
+      copyButton.onclick = async function() {
+        try {
+          await navigator.clipboard.writeText(result);
+          copyButton.textContent = "Copied!";
+        } catch (error) {
+          copyButton.textContent = "Copy not available";
+        }
+      };
+
+      output.appendChild(document.createElement("br"));
+      output.appendChild(copyButton);
+    }
 
   } catch (error) {
     output.textContent = "Sorry! " + error.message;
   }
 }
-
+    
 function proposal() {
   skillMintAI("proposalOut",
     "Write a professional freelance proposal. Client: " +
@@ -792,26 +813,35 @@ function description() {
   );
 }
 
+
 function cvBuilder() {
   skillMintAI("cvOut",
-    "Create a professional CV summary. Name: " +
+    "Create a professional CV summary using ONLY the information supplied by the user. Never invent qualifications, years of experience, job titles, achievements, technical skills or certifications. Do not exaggerate expertise. If information is missing, leave it out. Provide 2 or 3 polished versions with different tones. Name: " +
     document.getElementById("cvName").value +
-    ". Field: " + document.getElementById("cvField").value +
-    ". Experience: " + document.getElementById("cvExperience").value +
-    ". Skills: " + document.getElementById("cvSkills").value
+    ". Field: " +
+    document.getElementById("cvField").value +
+    ". Experience: " +
+    document.getElementById("cvExperience").value +
+    ". Skills: " +
+    document.getElementById("cvSkills").value
   );
-}
+    }
+      
+
 
 function coverLetter() {
   skillMintAI("coverOut",
-    "Write a professional job application cover letter. Name: " +
+    "Write a professional, persuasive job application cover letter. Use ONLY the information provided by the user. Never invent qualifications, work experience, achievements, certifications, technical skills or personal details. Do not claim expertise that the user has not stated. Use placeholders only for missing contact details, date and address. Name: " +
     document.getElementById("coverName").value +
-    ". Job title: " + document.getElementById("jobTitle").value +
-    ". Company: " + document.getElementById("companyName").value +
+    ". Job title: " +
+    document.getElementById("jobTitle").value +
+    ". Company: " +
+    document.getElementById("companyName").value +
     ". Qualifications and skills: " +
     document.getElementById("coverSkills").value
   );
-}
+    }
+    
 
 function excelHelper() {
   skillMintAI("excelOut",
@@ -823,18 +853,21 @@ function excelHelper() {
   );
 }
 
+
 function businessWriter() {
   skillMintAI("businessOut",
-    "Create attractive promotional business content. Business: " +
+    "Write engaging, ready-to-publish promotional content for this business. You MUST use the exact business name provided. Never replace it with placeholders such as Insert Business Name. Do not invent an address, phone number, prices, discounts, or claims. Business name: " +
     document.getElementById("businessName").value +
     ". Product or service: " +
     document.getElementById("businessProduct").value +
     ". Platform: " +
     document.getElementById("businessPlatform").value +
     ". Special offer or message: " +
-    document.getElementById("businessOffer").value
+    document.getElementById("businessOffer").value +
+    ". Make the content attractive, professional and ready to publish."
   );
-}
+    }
+              
   </script>
 </body>
 </html>
