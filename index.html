@@ -768,6 +768,30 @@ async function skillMintAI(outputId, prompt) {
 
       output.appendChild(document.createElement("br"));
       output.appendChild(copyButton);
+      
+      const downloadButton = document.createElement("button");
+      downloadButton.textContent = "Download Result";
+      downloadButton.className = "generate";
+
+      downloadButton.onclick = function() {
+        const blob = new Blob([result], {
+          type: "text/plain;charset=utf-8"
+        });
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = "SkillMint-Result.txt";
+        link.click();
+
+        URL.revokeObjectURL(url);
+      };
+
+      output.appendChild(document.createElement("br"));
+      output.appendChild(downloadButton);
+    
+      
     }
 
   } catch (error) {
