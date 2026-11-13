@@ -59,7 +59,7 @@ exports.handler = async (event) => {
         statusCode: 502,
         headers,
         body: JSON.stringify({
-          error: result.error?.message || "Gemini request failed."
+          error: JSON.stringify(result.error || result)
         })
       };
     }
